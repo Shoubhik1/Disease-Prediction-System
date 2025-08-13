@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Parkinson's Disease Prediction</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-image: url("/static/parkinsons.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
+
+        .glass-box {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-radius: 20px;
+            padding: 2rem;
+        }
+
+        .navbar {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+        }
+
+        label {
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body class="text-white">
+
+    <!-- Navbar -->
+    <nav class="navbar px-8 py-4 flex justify-between items-center text-white shadow-md">
+        <h2 class="text-2xl font-bold">Disease Prediction</h2>
+        <div class="space-x-6 text-lg">
+            <a href="{{url_for('home')}}" class="hover:text-cyan-300 transition">Home</a>
+            <a href="{{url_for('about')}}" class="hover:text-cyan-300 transition">About</a>
+            <a href="{{url_for('contact')}}" class="hover:text-cyan-300 transition">Contact Us</a>
+        </div>
+    </nav>
+
+    <!-- Parkinson's Form -->
+    <div class="min-h-screen flex items-center justify-center px-4 py-10">
+        <form method="post" action="{{url_for('parkinsons')}}"
+            class="glass-box w-full max-w-5xl shadow-xl text-white space-y-6">
+
+            <h1 class="text-4xl font-bold text-center mb-4">Parkinson's Disease Prediction</h1>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <label>MDVP:Fo(Hz) (Mean Fundamental Frequency)</label>
+                <input type="text" name="fo" class="p-2 rounded bg-gray-900 bg-opacity-30 text-white">
+
+                <label>MDVP:Fhi(Hz) (Maximum Fundamental Frequency)</label>
+                <input type="text" name="fhi" class="p-2 rounded bg-gray-900 bg-opacity-30 text-white">
+
+                <label>MDVP:Flo(Hz) (Minimum Fundamental Frequency)</label>
+                <input type="text" name="flo" class="p-2 rounded bg-gray-900 bg-opacity-30 text-white">
+
+                <label>MDVP:Jitter(%) (Frequency Variation - %)</label>
+                <input type="text" name="Jitter_percent" class="p-2 rounded bg-gray-900 bg-opacity-30 text-white">
+
+                <label>MDVP:Jitter(Abs) (Absolute Frequency Variation)</label>
+                <input type="text" name="Jitter_Abs" class="p-2 rounded bg-gray-900 bg-opacity-30 text-white">
+
+                <label>MDVP:RAP (Relative Average Perturbation)</label>
+                <input type="text" name="RAP" class="p-2 rounded bg-gray-900 bg-opacity-30 text-white">
+
+                <label>MDVP:PPQ (Five-Point Period Perturbation Quotient)</label>
+                <input type="text" name="PPQ" class="p-2 rounded bg-gray-900 bg-opacity-30 text-white">
+
+                <label>Jitter:DDP (Difference of Differences of Periods)</label>
+                <input type="text" name="DDP" class="p-2 rounded bg-gray-900 bg-opacity-30 text-white">
+
+                <label>MDVP:Shimmer (Amplitude Variation)</label>
+                <input type="text" name="Shimmer" class="p-2 rounded bg-gray-900 bg-opacity-30 text-white">
+
+                <label>MDVP:Shimmer(dB) (Amplitude Variation in dB)</label>
+                <input type="text" name="Shimmer_dB" class="p-2 rounded bg-gray-900 bg-opacity-30 text-white">
+
+                <label>Shimmer:APQ3 (3-point Amplitude Perturbation Quotient)</label>
+                <input type="text" name="APQ3" class="p-2 rounded bg-gray-900 bg-opacity-30 text-white">
+
+                <label>Shimmer:APQ5 (5-point Amplitude Perturbation Quotient)</label>
+                <input type="text" name="APQ5" class="p-2 rounded bg-gray-900 bg-opacity-30 text-white">
+
+                <label>MDVP:APQ (Amplitude Perturbation Quotient)</label>
+                <input type="text" name="APQ" class="p-2 rounded bg-gray-900 bg-opacity-30 text-white">
+
+                <label>Shimmer:DDA (Difference of Differences of Amplitudes)</label>
+                <input type="text" name="DDA" class="p-2 rounded bg-gray-900 bg-opacity-30 text-white">
+
+                <label>NHR (Noise-to-Harmonics Ratio)</label>
+                <input type="text" name="NHR" class="p-2 rounded bg-gray-900 bg-opacity-30 text-white">
+
+                <label>HNR (Harmonics-to-Noise Ratio)</label>
+                <input type="text" name="HNR" class="p-2 rounded bg-gray-900 bg-opacity-30 text-white">
+
+                <label>RPDE (Recurrence Period Density Entropy)</label>
+                <input type="text" name="RPDE" class="p-2 rounded bg-gray-900 bg-opacity-30 text-white">
+
+                <label>DFA (Detrended Fluctuation Analysis)</label>
+                <input type="text" name="DFA" class="p-2 rounded bg-gray-900 bg-opacity-30 text-white">
+
+                <label>Spread1 (Nonlinear signal spread measure)</label>
+                <input type="text" name="spread1" class="p-2 rounded bg-gray-900 bg-opacity-30 text-white">
+
+                <label>Spread2 (Another nonlinear spread measure)</label>
+                <input type="text" name="spread2" class="p-2 rounded bg-gray-900 bg-opacity-30 text-white">
+
+                <label>D2 (Correlation Dimension)</label>
+                <input type="text" name="D2" class="p-2 rounded bg-gray-900 bg-opacity-30 text-white">
+
+                <label>PPE (Pitch Period Entropy)</label>
+                <input type="text" name="PPE" class="p-2 rounded bg-gray-900 bg-opacity-30 text-white">
+            </div>
+
+            <div class="flex justify-center pt-6">
+                <button type="submit"
+                    class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-lg shadow-md transition">
+                    Predict Parkinson's
+                </button>
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>

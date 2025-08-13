@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>About | Disease Prediction System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-image: url('/static/home.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            font-family: 'Segoe UI', sans-serif;
+            -webkit-backface-visibility: hidden;
+            -moz-backface-visibility: hidden;
+            -ms-backface-visibility: hidden;
+            backface-visibility: hidden;
+            -webkit-transform: translateZ(0);
+            -moz-transform: translateZ(0);
+            -ms-transform: translateZ(0);
+            transform: translateZ(0);
+        }
+
+        .glass-card {
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(14px);
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .navbar {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+
+<body class="text-white">
+
+    <!-- Navbar -->
+    <nav class="navbar px-8 py-4 flex justify-between items-center text-white shadow-md">
+        <h2 class="text-2xl font-bold tracking-wide">Disease Prediction</h2>
+        <div class="space-x-6 text-lg font-medium">
+            <a href="{{url_for('home')}}" class="hover:text-red-300 transition duration-300">Home</a>
+            <a href="{{url_for('about')}}"
+                class="hover:text-red-300 transition duration-300 border-b-2 border-red-400 pb-1">About</a>
+            <a href="{{url_for('contact')}}" class="hover:text-red-300 transition duration-300">Contact Us</a>
+        </div>
+    </nav>
+
+    <!-- About Content -->
+    <div class="glass-card w-full max-w-4xl p-10 mx-auto mt-12 shadow-2xl text-white">
+        <h1 class="text-4xl font-bold text-center mb-8">About This Project</h1>
+
+        <p class="mb-5 text-lg leading-relaxed">
+            This Disease Prediction System is a machine learning-based web application that predicts the presence of:
+            <strong>Heart Disease</strong>, <strong>Diabetes</strong>, and <strong>Parkinson’s Disease</strong>, using
+            medical input parameters.
+        </p>
+
+        <p class="mb-5 text-lg leading-relaxed">
+            It uses pre-trained ML models (SVM and others), built with real-world medical data. The system is developed
+            using Flask for backend and Tailwind CSS for a responsive, modern frontend.
+        </p>
+
+        <p class="mb-5 text-lg leading-relaxed">
+            🔧 <strong>Technologies Used:</strong> Python, Flask, Scikit-learn, Pandas, Tailwind CSS.
+        </p>
+
+        <p class="mb-5 text-lg leading-relaxed">
+            📁 <strong>Modules:</strong>
+        <ul class="list-disc ml-8 mt-2">
+            <li>Heart Disease Prediction</li>
+            <li>Diabetes Prediction</li>
+            <li>Parkinson’s Disease Prediction</li>
+        </ul>
+        </p>
+
+        <p class="mb-5 text-lg leading-relaxed">
+            ✨ This system aims to support healthcare decisions with quick, accessible and AI-driven insights —
+            especially in remote or resource-limited settings.
+        </p>
+
+        <p class="text-center mt-8">
+            <a href="/" class="bg-white text-gray-900 font-semibold px-6 py-3 rounded hover:bg-gray-200 transition">
+                ⬅ Back to Home
+            </a>
+        </p>
+    </div>
+</body>
+
+</html>

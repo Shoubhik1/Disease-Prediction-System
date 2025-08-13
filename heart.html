@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Heart Disease Prediction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: url("/static/heart_image.jpg") no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 35px rgba(255, 0, 0, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 2.5rem;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .glass-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 50px rgba(255, 0, 0, 0.6);
+        }
+
+        .navbar {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        input::placeholder {
+            color: #ddd;
+        }
+    </style>
+
+</head>
+
+<body class="text-white">
+
+    <!-- Navbar (Consistent with Home Page) -->
+    <nav class="navbar px-8 py-4 flex justify-between items-center text-white">
+        <h2 class="text-2xl font-bold">Disease Prediction</h2>
+        <div class="space-x-6 text-lg">
+            <a href="{{ url_for('home') }}" class="hover:text-red-300 transition">Home</a>
+            <a href="{{ url_for('about') }}" class="hover:text-red-300 transition">About</a>
+            <a href="{{ url_for('contact')}}" class="hover:text-red-300 transition">Contact Us</a>
+        </div>
+    </nav>
+
+    <!-- Form Section -->
+    <div class="flex items-center justify-center px-4 py-12 min-h-[85vh]">
+        <div class="glass-card w-full max-w-4xl text-white">
+            <h1 class="text-4xl font-extrabold text-center mb-8">❤️ Heart Disease Prediction</h1>
+
+            <form method="POST" action="{{ url_for('heart')}}" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <input type="number" name="age" placeholder="Age (Years)" class="p-3 rounded bg-white bg-opacity-10"
+                    required>
+                <input type="number" name="sex" placeholder="Sex (1 = Male, 0 = Female)"
+                    class="p-3 rounded bg-white bg-opacity-10" required>
+                <input type="number" name="cp" placeholder="Chest Pain Type (0–3)"
+                    class="p-3 rounded bg-white bg-opacity-10" required>
+                <input type="number" name="trestbps" placeholder="Resting BP (mm Hg)"
+                    class="p-3 rounded bg-white bg-opacity-10" required>
+                <input type="number" name="chol" placeholder="Cholesterol (mg/dl)"
+                    class="p-3 rounded bg-white bg-opacity-10" required>
+                <input type="number" name="fbs" placeholder="Fasting Blood Sugar >120 (1/0)"
+                    class="p-3 rounded bg-white bg-opacity-10" required>
+                <input type="number" name="restecg" placeholder="Resting ECG Results (0–2)"
+                    class="p-3 rounded bg-white bg-opacity-10" required>
+                <input type="number" name="thalach" placeholder="Max Heart Rate Achieved"
+                    class="p-3 rounded bg-white bg-opacity-10" required>
+                <input type="number" name="exang" placeholder="Exercise Induced Angina (1/0)"
+                    class="p-3 rounded bg-white bg-opacity-10" required>
+                <input type="number" step="0.1" name="oldpeak" placeholder="ST Depression (Oldpeak)"
+                    class="p-3 rounded bg-white bg-opacity-10" required>
+                <input type="number" name="slope" placeholder="Slope of Peak ST Segment (0–2)"
+                    class="p-3 rounded bg-white bg-opacity-10" required>
+                <input type="number" name="ca" placeholder="Major Vessels Colored (0–3)"
+                    class="p-3 rounded bg-white bg-opacity-10" required>
+                <input type="number" name="thal" placeholder="Thalassemia (1=Normal, 2=Fixed, 3=Reversible)"
+                    class="p-3 rounded bg-white bg-opacity-10" required>
+
+                <div class="md:col-span-2">
+                    <button type="submit"
+                        class="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-4 rounded mt-4 transition">
+                        Predict
+                    </button>
+                </div>
+            </form>
+
+            {% if prediction %}
+            <div class="mt-6 text-center text-2xl font-semibold">
+                Prediction Result: {{ prediction }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+</body>
+
+</html>
